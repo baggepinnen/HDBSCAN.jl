@@ -7,12 +7,19 @@ This package is a very simple wrapper around [hdbscan](https://github.com/scikit
 ## Functions
 
 ```julia
-result = hdbscan(data; kwargs...)
+using HDBSCAN, Clustering
+result = hdbscan(X; min_cluster_size=15, min_samples=?, kwargs...)
 
 probabilities(result)
-exemplars(result)
+exemplars(result)       # Computed at first call, this takes long time
 outlier_scores(result)
 ```
-where `data` is `n_features × n_points` (the convention of Clustering.jl, opposite to the convention of the python library).
+where `X` is `n_features × n_points` (the convention of Clustering.jl, opposite to the convention of the python library).
 
-The `result::HdbscanResult` contains the `PyObject` clusterer which can be used to access everything that is not wrapped. 
+The `result::HdbscanResult <: Clustering.ClusteringResult` contains the `PyObject` clusterer which can be used to access everything that is not wrapped.
+
+The label assignments are stored in `result.assigments`. 0 values indicate noise (-1 in python version), positive values indicate a cluster assignment.
+
+## Documentation
+The original documentation is available here
+https://hdbscan.readthedocs.io/en/latest/basic_hdbscan.html
