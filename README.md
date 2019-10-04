@@ -8,7 +8,7 @@ This package is a very simple wrapper around [hdbscan](https://github.com/scikit
 
 ```julia
 using HDBSCAN, Clustering
-result = hdbscan(X; min_cluster_size=15, min_samples=?, kwargs...)
+result = hdbscan(X; min_cluster_size=5, min_samples=min_cluster_size, kwargs...)
 
 probabilities(result)
 exemplars(result)       # Computed at first call, this takes long time
