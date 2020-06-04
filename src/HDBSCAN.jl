@@ -14,7 +14,7 @@ hdbscan(min_cluster_size=5, min_samples=min_cluster_size, metric="euclidean", al
 """
 function hdbscan(X; min_cluster_size=5, kwargs...)
     @show hdbs
-    clusterer = hdbs.HDBSCAN(min_cluster_size=min_cluster_size, kwargs...)
+    clusterer = hdbs.HDBSCAN(;min_cluster_size=min_cluster_size, kwargs...)
     cluster_labels = clusterer.fit_predict(X')
     HdbscanResult(clusterer, cluster_labels .+ 1)
 end
