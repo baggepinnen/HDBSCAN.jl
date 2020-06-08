@@ -1,8 +1,6 @@
-[![Build Status](https://travis-ci.org/baggepinnen/HDBSCAN.jl.svg?branch=master)](https://travis-ci.org/baggepinnen/HDBSCAN.jl)
-[![codecov](https://codecov.io/gh/baggepinnen/HDBSCAN.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/baggepinnen/HDBSCAN.jl)
 
 # HDBSCAN
-This package is a very simple wrapper around [hdbscan](https://github.com/scikit-learn-contrib/hdbscan) for python. It is not feature complete.
+This package is a very simple wrapper around [hdbscan](https://github.com/scikit-learn-contrib/hdbscan) for python. It is not feature complete, but fully functional.
 
 ## Functions
 
@@ -13,6 +11,7 @@ result = hdbscan(X; min_cluster_size=5, min_samples=min_cluster_size, kwargs...)
 probabilities(result)
 exemplars(result)       # Computed at first call, this takes long time
 outlier_scores(result)
+result.assigments       # Contains the cluster assignments
 ```
 where `X` is `n_features × n_points` (the convention of Clustering.jl, opposite to the convention of the python library).
 
