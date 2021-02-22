@@ -5,7 +5,7 @@ export hdbscan, probabilities, exemplars, outlier_scores, leaf_size
 const hdbs = PyNULL()
 
 function __init__()
-    @eval global hdbs = pyimport("hdbscan")
+    copy!(hdbs, pyimport("hdbscan"))
 end
 
 """
