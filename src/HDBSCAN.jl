@@ -1,6 +1,6 @@
 module HDBSCAN
 using PyCall, Clustering
-export hdbscan, probabilities, exemplars, outlier_scores, leaf_size
+export hdbscan, probabilities, exemplars, outlier_scores, leaf_size, raw_data
 
 const hdbs = PyNULL()
 
@@ -31,5 +31,6 @@ probabilities(cr::HdbscanResult) = cr.clusterer.probabilities_
 exemplars(cr::HdbscanResult) = cr.clusterer.exemplars_
 outlier_scores(cr::HdbscanResult) = cr.clusterer.outlier_scores_
 leaf_size(cr::HdbscanResult) = cr.clusterer.leaf_size_
+raw_data(cr::HdbscanResult) = cr.clusterer._raw_data |> transpose
 
 end

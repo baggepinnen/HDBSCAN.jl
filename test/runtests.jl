@@ -12,5 +12,6 @@ result = hdbscan(X, min_cluster_size=60)
 probabilities(result)
 exemplars(result)       # Computed at first call, this takes long time
 outlier_scores(result)
+@test raw_data(result) == X
 
 end
